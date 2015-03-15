@@ -4,8 +4,6 @@ public class twoSort
 {
     public static void main(String[] args)
     {
-        //method that combines merge and insertion sort
-        //for better efficiency
 
         Scanner in = new Scanner(System.in);
 
@@ -54,14 +52,14 @@ public class twoSort
         System.out.println("The running time of MERGESORT is: " + endTime_1);
 
         long startTime_2 = System.nanoTime();
-        optSort(optSorted);
+        optSort(optSorted, 0, optSorted.length-1);
         long endTime_2 = System.nanoTime() - startTime_2;
         System.out.println("The running time of OPTIMIZED is: " + endTime_2 + '\n');
 
     }
 
     //OPTIMIZED SORT ********************************************************
-    public static void optSort(int[] array)
+    public static void optSort(int[] array, int start, int end)
     {
         //from experiment, the threshold size was 60
         //where insertion sort is for the most part faster than merge
@@ -69,10 +67,19 @@ public class twoSort
         {
             inSort(array);
         }
-        else
-        {
-            merSort(array, 0, array.length-1);
-        }
+        else if(start < end) //do merge
+      	{
+      		//create a midpoint
+      		int mid = (start + end) / 2;
+
+      		//two recursive calls
+      		merSort(array, start, mid);
+      		merSort(array, mid+1, end);
+
+      		//merge the two sorted parts
+      		merge(array, start, mid, end);
+      	}
+        else{}
 
     }
 
