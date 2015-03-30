@@ -14,3 +14,7 @@ Numero Tres
 
 Numero Cuatro
 -TBA
+
+
+Just for fun
+-Writing some sorting algorithm for fun, starting with heap and quick
