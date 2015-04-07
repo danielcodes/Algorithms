@@ -73,8 +73,8 @@ public class twoSort
       		int mid = (start + end) / 2;
 
       		//two recursive calls
-      		merSort(array, start, mid);
-      		merSort(array, mid+1, end);
+      		optSort(array, start, mid);
+      		optSort(array, mid+1, end);
 
       		//merge the two sorted parts
       		merge(array, start, mid, end);
