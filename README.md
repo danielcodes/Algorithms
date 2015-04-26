@@ -13,8 +13,4 @@ Numero Tres
 -Create a hybrid algorithm that fuses insertion and merge. Through trial and error, find the N value for which insertion sort is faster than merge (use nanotime). Then merge's base case occurs when N drops below the found value.
 
 Numero Cuatro
--TBA
-
-
-Just for fun
--Writing some sorting algorithm for fun, starting with heap and quick
+-Radix and Quick
