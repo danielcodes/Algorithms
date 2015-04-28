@@ -2,11 +2,9 @@ public class quickSort
 {
     public static void main(String[] args)
     {
-        System.out.println("hello noob");
+        int[] array = {41,56,33,22,17};
 
-        int[] array = {4,5,3,2,1};
-
-        quickSort(array, 0, 4);
+        quickSort(0, array.length - 1, array);
 
         for(int i=0; i<array.length; i++)
         {
@@ -19,24 +17,40 @@ public class quickSort
     //end is array.length - 1
     public static void quickSort(int start, int end, int[] array)
     {
-        int pivot = partition(start, end, array);
-        quickSort(start, pivot - 1, array);
-        quickSort(pivot + 1, end, array);
+        if(start < end)
+        {
+            int p = partition(start, end, array);
+            quickSort(start, p - 1, array);
+            quickSort(p + 1, end, array);
+        }
+
     }
+
+    public static void swap(int[] array, int i, int j)
+	  {
+    		int temp = array[i];
+    		array[i] = array[j];
+    		array[j] = temp;
+	  }
+
 
     //partition
     public static int partition(int start, int end, int[] array)
     {
-        //i and j, start at the beginning
-        //loop ends when j reaches the end-1, and the pivot is then
-        //swapped with i's last position
-        int i = 0, j = 0;
-        int temp;
+        //two counter i and j
         int pivot = array[end];
+        int i = start - 1;
 
-        
+        for(int j=start; j<end; j++)
+        {
+            if(array[j] <= pivot)
+            {
+                i++;
+                swap(array,i,j);
+            }
+        }
 
-
-
+        swap(array, i+1, end);
+        return i+1;
     }
 }
