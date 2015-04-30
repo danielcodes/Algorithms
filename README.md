@@ -14,3 +14,8 @@ Numero Tres
 
 Numero Cuatro
 -Radix and Quick
+--Quicksort
+Differs from merge, by doing the work in the divide part
+A pivot is found, through a partition function in this particular implementation
+it will be the last element, this selected pivot get placed in the correct array location and from there, quicksort is called recursively again, on the 2 divided
+sides

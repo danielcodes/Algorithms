@@ -42,10 +42,13 @@ public class quickSort
     //partition
     public static int partition(int start, int end, int[] array)
     {
-        //two counter i and j
+        //select the pivot (last ele), set i to the beginning - 1
         int pivot = array[end];
         int i = start - 1;
 
+        //j is a counter, when it encounters a number smaller than the pivot
+        //i moves forward and i and j swap places
+        //this serves to place elements smaller than the pivot on the left side
         for(int j=start; j<end; j++)
         {
             if(array[j] <= pivot)
@@ -55,6 +58,8 @@ public class quickSort
             }
         }
 
+        //by the end, i contains the last element smaller than the pivot
+        //so we swap with i+1 and the pivot, now it is in the correct location
         swap(array, i+1, end);
         return i+1;
     }
