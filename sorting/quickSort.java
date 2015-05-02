@@ -1,20 +1,38 @@
+import java.util.*;
+import java.io.*;
+
 public class quickSort
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws FileNotFoundException
     {
-        int[] array = {41,56,33,22,17};
-        int[] array1 = {41,56,33,22,17};
+        //read data from input file
+        Scanner scanner = new Scanner(new File("input.txt"));
+        int [] input = new int [10];
+        int i = 0;
+        while(i < 10){
+           input[i++] = scanner.nextInt();
+        }
 
+        //need of 2 arrays to sort
+        int[] input_copy = new int[10];
+        System.arraycopy(input, 0, input_copy, 0, input.length);
 
+        System.out.println("The input on these arrays is ");
+        for(int k=0; k<input_copy.length; k++)
+        {
+            System.out.println(input_copy[k]);
+        }
+
+        //testing running times
         long startTime = System.nanoTime();
-        quickSort(0, array.length - 1, array);
+        quickSort(0, input.length - 1, input);
         long endTime = System.nanoTime() - startTime;
-        System.out.println("The running time of INSERTION is: " + endTime);
+        System.out.println("The running time of OUICKSORT is: " + endTime);
 
         long startTime1 = System.nanoTime();
-        radsort(array1);
+        radsort(input_copy);
         long endTime1 = System.nanoTime() - startTime1;
-        System.out.println("The running time of INSERTION is: " + endTime1);
+        System.out.println("The running time of RADIX is: " + endTime1);
 
     }
 
