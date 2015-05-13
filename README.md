@@ -1,5 +1,3 @@
-# Algorithms
-
 ##SORTING
 
 ###One - Insertion Sort
