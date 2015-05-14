@@ -10,5 +10,22 @@ public class Interval
         this.start = start;
         this.finish = finish;
         this.value = value;
+        System.out.println("INTERVAL "+ this.start + " " + this.finish + " " + this.value);
+    }
+
+    //only needs getters for the values of the intervals
+    public int getStart()
+    {
+        return start;
+    }
+
+    public int getFinish()
+    {
+        return finish;
+    }
+
+    public int getValue()
+    {
+        return value;
     }
 }
