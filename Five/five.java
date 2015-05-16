@@ -5,9 +5,9 @@ public class five
     public static void main(String[] args)
     {
         Interval[] example = new Interval[3];
-        example[0] = new Interval(1, 3, 4);
+        example[2] = new Interval(1, 3, 4);
         example[1] = new Interval(2, 5, 8);
-        example[2] = new Interval(6, 7, 10);
+        example[0] = new Interval(6, 7, 10);
 
         sort(example);
         for(int i=0; i<example.length; i++)
@@ -44,34 +44,20 @@ public class five
     }
 
     //write a sort function, makes it easier on p function
-    //in order to sort efficiently, we can subtract (finish - start)
     public static void sort(Interval[] Intervals)
     {
         //use insertion sort
-        for(int i=1; i<Intervals.length; i++){
-
+        for(int i=1; i<Intervals.length; i++)
+        {
             Interval key = Intervals[i];
             int j = i-1;
 
-            while( j>=0 && Intervals[j].getDifference() > key ){
+            while( j>=0 && Intervals[j].getFinish() > key.getFinish() ){
                 Intervals[j+1] = Intervals[j];
                 Intervals[j] = key;
                 j = j-1;
             }
-
         }
     }
 
-
-    // for(int i=1; i<Intervals.length; i++)
-    // {
-    //     int key = Intervals[i].getDifference();
-    //     int j = i-1;
-    //
-    //     while( j>=0 && Intervals[j].getDifference() > key ){
-    //         Intervals[j+1] = Intervals[j];
-    //         Intervals[j] = key;
-    //         j = j-1;
-    //     }
-    // }
 }
