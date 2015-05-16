@@ -28,4 +28,11 @@ public class Interval
     {
         return value;
     }
+
+    //create a method that returns difference to facilitate sorting
+    public int getDifference()
+    {
+        return finish - start;
+    }
+
 }
