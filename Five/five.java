@@ -4,14 +4,21 @@ public class five
 {
     public static void main(String[] args)
     {
-        Interval[] example = new Interval[5];
-        example[1] = new Interval(1, 3, 4);
-        example[2] = new Interval(2, 5, 8);
-        example[0] = new Interval(6, 7, 10);
+        System.out.println("*****************************************");
+        System.out.println("DECLARING INTERVALS: ");
+
+        Interval[] example = new Interval[4];
+        example[0] = new Interval(1, 3, 4);
+        example[1] = new Interval(2, 5, 8);
+        example[2] = new Interval(6, 7, 10);
         example[3] = new Interval(8, 15, 10);
-        example[4] = new Interval(7, 8, 10);
+
+        System.out.println("*****************************************");
+
 
         sort(example);
+        print(example);
+
         for(int i=0; i<example.length; i++)
         {
             System.out.print(p(example, i) + " ");
@@ -22,12 +29,37 @@ public class five
 
     }
 
+    //assums intervals have been sorted
+    public static void print(Interval[] intervals)
+    {
+        System.out.println("*****************************************");
+        System.out.println("PRINTING INTERVALS: ");
+        //to visually see the intervals
+        int space, dash;
 
+        for(int i=0; i<intervals.length; i++)
+        {
+            space = intervals[i].getStart();
+            dash = intervals[i].getFinish() - intervals[i].getStart() + 1;
+
+            //spaces
+            for(int j=0; j<space; j++)
+              System.out.print(" ");
+
+            //dashes
+            for(int k=0; k<dash; k++)
+              System.out.print("-");
+
+            System.out.println();
+        }
+
+        System.out.println("*****************************************");
+    }
 
     //need p function that gives the leftmost interval
     //enter the set of intervals, and the interval index
     //p will be tailored to work only on an array of sorted intervals
-    public static int p(Interval[] Intervals, int index)
+    public static int p(Interval[] intervals, int index)
     {
         int result;
 
@@ -39,7 +71,7 @@ public class five
         {
             int before = index-1;
             //error here A[-1]
-            while(Intervals[before].getFinish() > Intervals[index].getStart())
+            while(intervals[before].getFinish() > intervals[index].getStart())
             {
                 before--;
                 //ugly solution, but at current time could not think of a better way
@@ -55,17 +87,17 @@ public class five
     }
 
     //write a sort function, makes it easier on p function
-    public static void sort(Interval[] Intervals)
+    public static void sort(Interval[] intervals)
     {
         //use insertion sort
-        for(int i=1; i<Intervals.length; i++)
+        for(int i=1; i<intervals.length; i++)
         {
-            Interval key = Intervals[i];
+            Interval key = intervals[i];
             int j = i-1;
 
-            while( j>=0 && Intervals[j].getFinish() > key.getFinish() ){
-                Intervals[j+1] = Intervals[j];
-                Intervals[j] = key;
+            while( j>=0 && intervals[j].getFinish() > key.getFinish() ){
+                intervals[j+1] = intervals[j];
+                intervals[j] = key;
                 j = j-1;
             }
         }
