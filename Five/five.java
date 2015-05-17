@@ -4,16 +4,20 @@ public class five
 {
     public static void main(String[] args)
     {
-        Interval[] example = new Interval[3];
-        example[2] = new Interval(1, 3, 4);
-        example[1] = new Interval(2, 5, 8);
+        Interval[] example = new Interval[5];
+        example[1] = new Interval(1, 3, 4);
+        example[2] = new Interval(2, 5, 8);
         example[0] = new Interval(6, 7, 10);
+        example[3] = new Interval(8, 15, 10);
+        example[4] = new Interval(7, 8, 10);
 
         sort(example);
         for(int i=0; i<example.length; i++)
         {
-            System.out.print(example[i].getValue() + " ");
+            System.out.print(p(example, i) + " ");
         }
+
+        //now always sort the intervals, before running the p function
 
 
     }
@@ -22,22 +26,29 @@ public class five
 
     //need p function that gives the leftmost interval
     //enter the set of intervals, and the interval index
+    //p will be tailored to work only on an array of sorted intervals
     public static int p(Interval[] Intervals, int index)
     {
+        int result;
 
-        //find values of the index's interval whose finish value
-        //is less than the index's start value
-
-        //set first element as the result and swap as you move through the array
-        int result = 0;
-
-        //condition is finish < index.start
-        for(int i=1; i<Intervals.length; i++)
+        if(index == 0)
         {
-            if((Intervals[i].getFinish() > Intervals[result].getFinish()) && (Intervals[index].getStart() > Intervals[i].getFinish()) )
+            return 0;
+        }
+        else
+        {
+            int before = index-1;
+            //error here A[-1]
+            while(Intervals[before].getFinish() > Intervals[index].getStart())
             {
-                result = i;
+                before--;
+                //ugly solution, but at current time could not think of a better way
+                //break away, as soon as the counter turns negative to avoid outofbounds error
+                if(before < 0)
+                  before = 0;
+                  break;
             }
+            result = before;
         }
 
         return result;
