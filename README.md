@@ -20,3 +20,6 @@ sides
 
 ###Five - Weighted Interval Scheduling
 A set of intervals over a period of time that have a values. For intervals to be compatible, there mustn't be overlap in time. The goal is to find a combination of intervals that contain the largest value with no overlap.
+
+###Six - Graph Coloring
+Use a greedy algorithm to color a graph, so that it uses the least amount of colors and no adjacent vertices have the same color.
