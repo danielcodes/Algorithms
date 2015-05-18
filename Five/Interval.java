@@ -1,13 +1,11 @@
 public class Interval
 {
     //a counter
-    public static int count = 1;
+    public static int count = 0;
 
     private int start;
     private int finish;
     private int value;
-
-
 
     //Intervals must be filled when declared
     public Interval(int start, int finish, int value)

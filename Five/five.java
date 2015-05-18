@@ -6,6 +6,7 @@ public class five
     {
         System.out.println("*****************************************");
         System.out.println("DECLARING INTERVALS: ");
+        System.out.println("INTERVAL # | " +  "start | finish | value");
         //interval estimates created from the slides, to facilitate simulation of values
         Interval[] example = new Interval[6];
         //gotta initiate the first one to nothing otherwise null pointer exception
@@ -20,10 +21,10 @@ public class five
 
         print(example);
 
-        for(int i=1; i<example.length; i++)
-        {
-            System.out.print(p(example, i) + " ");
-        }
+        // for(int i=1; i<example.length; i++)
+        // {
+        //     System.out.print(p(example, i) + " ");
+        // }
 
         //no create array with the optimal solutions
         int[] opt = new int[6];
@@ -41,6 +42,10 @@ public class five
             System.out.print(opt[k] + " ");
         }
         System.out.println();
+
+        //backtrack to find solution
+        System.out.print("Backtracking from optimal solution array to find the intervals: ");
+        getSolution(example, 5, opt);
 
     }
 
@@ -65,7 +70,7 @@ public class five
             for(int k=0; k<dash; k++)
               System.out.print("-");
 
-            System.out.println();
+            System.out.println(" #" + i + " value: " + intervals[i].getValue());
         }
 
         System.out.println("*****************************************");
@@ -104,5 +109,22 @@ public class five
         return result;
     }
 
+    //backtrack for solution function
+    public static void getSolution(Interval[] intervals, int index, int[] opt)
+    {
+        //base case
+        if(index > 0)
+        {
+            if( (intervals[index].getValue() + opt[p(intervals,index)]) >= opt[index-1] )
+            {
+                System.out.print(index + " ");
+                getSolution(intervals, p(intervals,index), opt);
+            }
+            else
+            {
+                getSolution(intervals, index-1, opt);
+            }
+        }
+    }
 
 }
