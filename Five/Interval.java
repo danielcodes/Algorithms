@@ -1,8 +1,13 @@
 public class Interval
 {
+    //a counter
+    public static int count = 1;
+
     private int start;
     private int finish;
     private int value;
+
+
 
     //Intervals must be filled when declared
     public Interval(int start, int finish, int value)
@@ -10,7 +15,10 @@ public class Interval
         this.start = start;
         this.finish = finish;
         this.value = value;
-        System.out.println("INTERVAL "+ this.start + " " + this.finish + " " + this.value);
+        System.out.println("INTERVAL " + count + " | "+ this.start + " " + this.finish + " " + this.value);
+
+        //increase count
+        count++;
     }
 
     //only needs getters for the values of the intervals
