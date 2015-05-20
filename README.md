@@ -23,3 +23,6 @@ A set of intervals over a period of time that have a values. For intervals to be
 
 ###Six - Graph Coloring
 Use a greedy algorithm to color a graph, so that it uses the least amount of colors and no adjacent vertices have the same color.
+
+###Seven - Dijkstra Shortest Path
+Given a graph find the shortest path, between any two pair of vertices
