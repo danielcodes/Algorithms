@@ -5,10 +5,19 @@ public class seven
 {
     public static void main(String[] args)
     {
-        Vertex v = new Vertex();
-        System.out.println(v.toString());
 
-        System.out.println(Double.POSITIVE_INFINITY);
-        System.out.println(45 < v.getValue());
+        //adjacency matrix, with weights, 0 for no edge
+        double[][] matrix = { {0,2,2,3,4},
+                              {2,0,5,2,4},
+                              {2,5,0,3,1},
+                              {3,2,3,0,0},
+                              {4,4,1,0,0},
+                            };
+
+        Graph g = new Graph(5, matrix);
+
+        
+
+
     }
 }
