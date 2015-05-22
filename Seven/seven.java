@@ -14,9 +14,11 @@ public class seven
                               {4,4,1,0,0},
                             };
 
+        //first param is # of vertices
         Graph g = new Graph(5, matrix);
 
-        
+        g.runDijkstra(0);
+        System.out.println(g.getNextVertex());
 
 
     }
