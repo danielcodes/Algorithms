@@ -3,23 +3,24 @@ public class Vertex
     //difference between visited and expanded
     //expanded means that we're looking at the neighboring edges of the vertex
     private boolean expanded;
-    private int value;
+    private double value;
     private int parent; //initially wanted a vertex, but it'll be easier with an int
 
     //constructor
-    public Vertex(boolean expanded, int value, int parent)
+    public Vertex()
     {
-        this.expanded = expanded;
-        this.value = value;
-        this.parent = parent;
+        this.expanded = false;
+        this.value = Double.POSITIVE_INFINITY;
+        this.parent = -1;
     }
 
+    //************ GETTERS *****************
     public boolean getExpanded()
     {
         return expanded;
     }
 
-    public int getValue()
+    public double getValue()
     {
         return value;
     }
@@ -28,6 +29,23 @@ public class Vertex
     {
         return parent;
     }
+
+    //************ SETTERS *****************
+    public void setExpanded(boolean expanded)
+    {
+        this.expanded = expanded;
+    }
+
+    public void setValue(double value)
+    {
+        this.value = value;
+    }
+
+    public void setParent(int parent)
+    {
+        this.parent = parent;
+    }
+
 
     public String toString()
     {

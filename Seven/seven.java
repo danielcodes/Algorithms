@@ -5,10 +5,10 @@ public class seven
 {
     public static void main(String[] args)
     {
-        Vertex v = new Vertex(false, -1, -1);
+        Vertex v = new Vertex();
         System.out.println(v.toString());
 
-        
-
+        System.out.println(Double.POSITIVE_INFINITY);
+        System.out.println(45 < v.getValue());
     }
 }
