@@ -59,6 +59,10 @@ public class Graph
 
         printInfo();
 
+        //reset works
+        resetVertices();
+        printInfo();
+
     }
 
     //to finding the next vertex to expand
@@ -149,6 +153,15 @@ public class Graph
         {
             System.out.print(vertices[arrow].getParent() + " ");
             arrow = vertices[arrow].getParent();
+        }
+    }
+
+    //to find shortest path for all pairs, the graph vertices have to be 'reseted'
+    private void resetVertices()
+    {
+        for(int i=0; i<vertices.length; i++)
+        {
+            vertices[i].resetVertex();
         }
     }
 

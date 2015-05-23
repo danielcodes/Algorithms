@@ -46,6 +46,14 @@ public class Vertex
         this.parent = parent;
     }
 
+    //sets vertex backto initial state
+    public void resetVertex()
+    {
+        this.expanded = false;
+        this.value = Double.POSITIVE_INFINITY;
+        this.parent = -1;
+    }
+
 
     public String toString()
     {
