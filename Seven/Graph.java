@@ -4,7 +4,7 @@
 public class Graph
 {
     private Vertex[] vertices;
-    private double[][] adjMatrix;
+    private double[][] adjMatrix; //basically contains edges
 
     //the graph will start with a set of vertices and an adjacency matrix
     public Graph(int number, double[][] adjMatrix)
@@ -114,7 +114,7 @@ public class Graph
     }
 
     //function to expand a vertex
-    public void expandVertex(int index)
+    private void expandVertex(int index)
     {
         //set expanded, value does not change neither does parent
         vertices[index].setExpanded(true);
@@ -137,13 +137,30 @@ public class Graph
         }
     }
 
+    //after filling the vertices's 3 variables, backtrack to find solution
+    //just going to print the path
+    public void printPath(int index)
+    {
+        System.out.print(index + " ");
+
+        //print if the it doesn't get to the root (-1)
+        int arrow = index; //follows the path
+        while(vertices[arrow].getParent() != -1)
+        {
+            System.out.print(vertices[arrow].getParent() + " ");
+            arrow = vertices[arrow].getParent();
+        }
+    }
+
     //need for a table that will print the status of the graph
     //keeping track of: expanded, value and parent
     public void printInfo()
     {
         for(int i=0; i<vertices.length; i++)
         {
-            System.out.println("#" + i + " " + vertices[i].toString());
+            System.out.print("#" + i + " " + vertices[i].toString() + " PATH: ");
+            printPath(i);
+            System.out.println();
         }
     }
 

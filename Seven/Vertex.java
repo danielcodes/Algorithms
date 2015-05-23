@@ -49,6 +49,6 @@ public class Vertex
 
     public String toString()
     {
-        return "VERTEX, expanded:" + expanded + " value:" + value + " parent:" + parent;
+        return "Vertex, expanded:" + expanded + " value:" + value + " parent:" + parent;
     }
 }
