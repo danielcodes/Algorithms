@@ -48,89 +48,103 @@ public class Graph
         }
 
         //need to create a function to see which vertex to expand next
+        int nextVertex = getNextVertex();
 
+        //iterative case
+        while(nextVertex != -1) //this means, there are still vertices to be expanded
+        {
+            expandVertex(nextVertex);
+            nextVertex = getNextVertex();
+        }
 
-
-
-
-
+        printInfo();
 
     }
 
     //to finding the next vertex to expand
-    public int getNextVertex()
+    private int getNextVertex()
     {
-        int next;
+        //will return a negative value, if not next value is found
+        int next = -1, counter = 0;
+        boolean found = false;
 
-        //need to first set the first instance of next
-        //loop that runs through the vertices's expandable variable
-        for(int i=0; i<vertices.length; i++)
+        //the next index has not been found yet, once it has, break out of the loop
+        while(!found)
         {
-            if(vertices[i].getExpanded() == false)
+            //counter goes up to 5, and crashh
+            if(vertices[counter].getExpanded() == false && counter < vertices.length)
             {
-                //first instace of a 0
-                next = i;
+                next = counter;
+                found = true;
             }
-            //exit loop
-            break;
+            else
+            {
+                counter++;
+                //it has reached the end of the vertices array
+                if(counter == vertices.length)
+                {
+                    found = true;
+                }
+            }
         }
 
-        //run the same loop but now find the lowest non-expanded vertex
-        for(int i=0; i<vertices.length; i++)
+        //can get ugly if it hits v[-1], need if else
+        //at this point, next is still negative
+        if(next < 0)
         {
-            //check if it has been expanded
-            if(vertices[i].getExpanded() == false)
+            return next;
+        }
+        else
+        {
+            for(int i=0; i<vertices.length; i++)
             {
-                //check whether next needs to be updated
-                if(vertices[i].getValue() < vertices[next].getValue())
+                //check if it has been expanded
+                if(vertices[i].getExpanded() == false)
                 {
-                    next = i;
+                    //check whether next needs to be updated
+                    if(vertices[i].getValue() < vertices[next].getValue())
+                    {
+                        next = i;
+                    }
                 }
             }
         }
 
         return next;
-
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //insertion sortt, might need it for later
-    public void swapSort(int[] array)
+    //function to expand a vertex
+    public void expandVertex(int index)
     {
-        //sort it, using insertion sort
-        for(int i=1; i<array.length; i++)
+        //set expanded, value does not change neither does parent
+        vertices[index].setExpanded(true);
+
+        //loop to travel the edges
+        for(int i=0; i<vertices.length; i++)
         {
-
-            int key = array[i];
-            int j = i-1;
-
-            while( j>=0 && array[j] > key )
+            //skip if there isn't an edge, or if the chosen vertex is the parent
+            if( adjMatrix[index][i] == 0 || vertices[index].getParent() == i )
+            {}
+            else
             {
-                array[j+1] = array[j];
-                array[j] = key;
-                j = j-1;
+                //another check to see if there is a shorter path to other vertices
+                if( vertices[index].getValue() + adjMatrix[index][i] < vertices[i].getValue() )
+                {
+                    vertices[i].setValue( vertices[index].getValue() + adjMatrix[index][i] );
+                    vertices[i].setParent(index);
+                }
             }
-
         }
     }
 
-
-
-
+    //need for a table that will print the status of the graph
+    //keeping track of: expanded, value and parent
+    public void printInfo()
+    {
+        for(int i=0; i<vertices.length; i++)
+        {
+            System.out.println("#" + i + " " + vertices[i].toString());
+        }
+    }
 
 }

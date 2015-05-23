@@ -18,7 +18,6 @@ public class seven
         Graph g = new Graph(5, matrix);
 
         g.runDijkstra(0);
-        System.out.println(g.getNextVertex());
 
 
     }
