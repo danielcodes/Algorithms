@@ -57,12 +57,21 @@ public class Graph
             nextVertex = getNextVertex();
         }
 
+        System.out.println("CHOSEN VERTEX: " + start);
         printInfo();
+    }
 
-        //reset works
-        resetVertices();
-        printInfo();
-
+    //run Dijkstra on all pairs
+    public void getAllPairs()
+    {
+        System.out.println("************************ START *******************************");
+        System.out.println("RUNNING DIJKSTRA'S SHORTEST PATH ON ALL PAIRS\n");
+        for(int i=0; i<vertices.length; i++)
+        {
+            runDijkstra(i);
+            resetVertices();
+        }
+        System.out.println("************************ FINISH *******************************");
     }
 
     //to finding the next vertex to expand
@@ -175,6 +184,7 @@ public class Graph
             printPath(i);
             System.out.println();
         }
+        System.out.println();
     }
 
 }

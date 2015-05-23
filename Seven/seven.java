@@ -17,23 +17,7 @@ public class seven
         //first param is # of vertices
         Graph g = new Graph(5, matrix);
 
-        g.runDijkstra(0);
-
-
-        //new graph
-        // double[][] matrix = { {0,0,0,1,4,0,0,0},
-        //                       {0,0,4,3,0,0,0,0},
-        //                       {0,4,0,0,0,4,4,0},
-        //                       {1,3,0,0,0,5,0,2},
-        //                       {4,0,0,0,0,0,6,0},
-        //                       {0,0,4,5,0,0,0,0},
-        //                       {0,0,4,0,6,0,0,4},
-        //                       {0,0,0,2,0,0,4,0},
-        //                     };
-        //
-        // Graph g = new Graph(8, matrix);
-        // g.runDijkstra(0);
-
+        g.getAllPairs();
 
     }
 }
