@@ -33,6 +33,7 @@ public class Graph
             nextVertex = getNextVertex();
         }
 
+        System.out.println("CHOSEN VERTEX: " + start);
         printInfo();
 
     }
@@ -40,11 +41,14 @@ public class Graph
     //method to color from all vertices
     public void colorAll()
     {
+        System.out.println("************************ START *******************************");
+        System.out.println("GRAPH COLORING USING A GREEDY ALGORITHM\n");
         for(int i=0; i<vertices.length; i++)
         {
             colorGraph(i);
             resetVertices();
         }
+        System.out.println("************************ FINISH *******************************");
     }
 
     //need to find next vertex to color

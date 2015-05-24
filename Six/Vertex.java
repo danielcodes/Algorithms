@@ -40,7 +40,7 @@ public class Vertex
 
     public String toString()
     {
-        return "Vertex, hasColor: " + hasColor + " | color:" + color;
+        return "Vertex, hasColor: " + hasColor + " | color: " + color;
     }
 
 }
