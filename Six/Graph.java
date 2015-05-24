@@ -25,8 +25,6 @@ public class Graph
         vertices[start].sethasColor(true);
         vertices[start].setColor(0);
 
-        printInfo();
-
         int nextVertex = getNextVertex();
 
         while(nextVertex != -1)
@@ -39,8 +37,18 @@ public class Graph
 
     }
 
+    //method to color from all vertices
+    public void colorAll()
+    {
+        for(int i=0; i<vertices.length; i++)
+        {
+            colorGraph(i);
+            resetVertices();
+        }
+    }
+
     //need to find next vertex to color
-    public int getNextVertex()
+    private int getNextVertex()
     {
         //will return a negative value, if no next value is found
         int next = -1, counter = 0;
@@ -70,29 +78,59 @@ public class Graph
     }
 
     //method to color a vertex
-    public void colorVertex(int index)
+    //fill the colors array with 1s to indicate it has been used
+    //run through the array to find a 0, that is your new color
+    private void colorVertex(int index)
     {
         //idea is to check neighboring vertices first
         //set to first color, check for adjacent vertices, if there is a clash, add up
         vertices[index].sethasColor(true);
 
-        int current = 0;
-        vertices[index].setColor(current); //set to 0 first, can change
+        //had to bump up the array size by one
+        int[] colors = new int[vertices.length];
 
         for(int i=0; i<vertices.length; i++)
         {
             //check if there is an edges first
             if(adjMatrix[index][i] == 1)
             {
-                //compare color
-                if(vertices[index].getColor() == vertices[i].getColor())
+                //bump up the used colors
+                colors[ vertices[i].getColor() ] = 1;
+            }
+        }
+
+        //find the first 0
+        boolean found = false;
+        int counter = 0;
+
+        while(!found)
+        {
+            if(colors[counter] == 0)
+            {
+                //set the index to said color
+                vertices[index].setColor(counter);
+                found = true;
+            }
+            else
+            {
+                counter++;
+                //it has reached the end of the vertices array
+                if(counter == vertices.length)
                 {
-                    //bump up the color
-                    vertices[index].setColor(++current);
+                    found = true;
                 }
             }
         }
 
+    }
+
+    //reset to reuse
+    private void resetVertices()
+    {
+        for(int i=0; i<vertices.length; i++)
+        {
+            vertices[i].resetVertex();
+        }
     }
 
     //a method to retrieve info

@@ -14,7 +14,7 @@ public class six
 
         Graph g = new Graph(4, matrix);
 
-        g.colorGraph(0);
+        g.colorAll();
 
 
     }

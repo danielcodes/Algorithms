@@ -31,6 +31,13 @@ public class Vertex
         this.color = color;
     }
 
+    //sets vertex backto initial state
+    public void resetVertex()
+    {
+        this.hasColor = false;
+        this.color = 0;
+    }
+
     public String toString()
     {
         return "Vertex, hasColor: " + hasColor + " | color:" + color;
