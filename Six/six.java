@@ -4,6 +4,10 @@ public class six
 {
     public static void main(String[] args)
     {
-        System.out.println("sup");
+        Vertex v = new Vertex();
+        System.out.println(v.toString());
+
+
+
     }
 }
