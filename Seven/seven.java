@@ -11,7 +11,7 @@ public class seven
                               {2,0,5,2,4},
                               {2,5,0,3,1},
                               {3,2,3,0,0},
-                              {4,4,1,0,0},
+                              {4,4,1,0,0}
                             };
 
         //first param is # of vertices

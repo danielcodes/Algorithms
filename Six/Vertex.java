@@ -15,7 +15,7 @@ public class Vertex
         return hasColor;
     }
 
-    public int color()
+    public int getColor()
     {
         return color;
     }

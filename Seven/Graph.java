@@ -180,7 +180,7 @@ public class Graph
     {
         for(int i=0; i<vertices.length; i++)
         {
-            System.out.print("#" + i + " " + vertices[i].toString() + " PATH: ");
+            System.out.print("#" + i + " " + vertices[i].toString() + " -- PATH: ");
             printPath(i);
             System.out.println();
         }
